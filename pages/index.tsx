@@ -3,6 +3,9 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  console.log(process.env.NEXT_SERVER_TEST_1)
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -69,3 +72,13 @@ export default function Home() {
     </div>
   )
 }
+
+
+export async function getServerSideProps(/*context*/) {
+  
+
+  return {
+    props: {}, // will be passed to the page component as props
+  }
+}
+
