@@ -4,6 +4,7 @@ import app from '../lib/firebase'
 import { DocumentData, getFirestore, QuerySnapshot } from "firebase/firestore";
 import { collection, addDoc, getDocs } from "firebase/firestore"; 
 import { useEffect, useState } from 'react';
+import { TikTokScraper } from '../api/TikTok/src';
 
 
 
@@ -13,6 +14,18 @@ const db = getFirestore(app)
 
 export default function Home() {
   const [docs, setDocs] = useState<QuerySnapshot<DocumentData> | null>(null)
+  const scraper = new TikTokScraper();
+
+  async function getTrends() {
+    return scraper.getTrending()
+  }
+
+  async function getTrendsAPI() {
+    const response = await fetch('/api/trending')
+    const value = await response.json()
+    console.log(value);
+
+  }
 
   async function testing() {
     try {
@@ -50,6 +63,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
     <button className='bg-slate-900' onClick={testing}>add user</button>
+    <button className='bg-green-900' onClick={getTrends}>Get Trends</button>
+    <button className='bg-red-900' onClick={getTrendsAPI}>Get Trends</button>
+
     <p className='text-lg'>test</p>
     </div>
   )
