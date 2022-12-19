@@ -2,8 +2,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
-  console.log(process.env.NEXT_SERVER_TEST_1)
+
+
+
+
+export default function Home(response:any) {
+  console.log(response)
 
 
   return (
@@ -74,11 +78,4 @@ export default function Home() {
 }
 
 
-export async function getServerSideProps(/*context*/) {
-  
-
-  return {
-    props: {}, // will be passed to the page component as props
-  }
-}
 
