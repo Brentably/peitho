@@ -11,8 +11,10 @@ const db = getFirestore(app)
 
 
 
+
 export default function Home() {
   const [docs, setDocs] = useState<any[] | null>(null)
+
 
   async function testing() {
     try {
