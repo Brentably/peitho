@@ -11,10 +11,11 @@ interface PropsType<T> {
 interface AbstractItem {
     video_id: string;
     play: string;
+    key: string;
 }
 
 export async function getStaticProps() {
-    const url = 'https://www.tikwm.com/api/feed/list?region=US&count=3'
+    const url = 'https://www.tikwm.com/api/feed/list?region=US&count=1'
     const res = await fetch(url)
     const posts = await res.json()
     const data = posts['data']
@@ -26,7 +27,7 @@ export async function getStaticProps() {
 export default function Trending<T extends AbstractItem>(props: PropsType<T>) {
     const items = props.items;
     const listItems = items.map((item) =>
-        <li>{item.play}</li>
+        <li key="{item.video_id}">{item.play}</li>
     );
     return (
         <div>
