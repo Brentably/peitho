@@ -4,7 +4,6 @@ import app from '../lib/firebase'
 import { DocumentData, getFirestore, QuerySnapshot } from "firebase/firestore";
 import { collection, addDoc, getDocs } from "firebase/firestore"; 
 import { useEffect, useState } from 'react';
-import { TikTokScraper } from '../api/TikTok/src';
 
 
 
@@ -14,7 +13,6 @@ const db = getFirestore(app)
 
 export default function Home() {
   const [docs, setDocs] = useState<any[] | null>(null)
-  const scraper = new TikTokScraper();
 
   async function testing() {
     try {
