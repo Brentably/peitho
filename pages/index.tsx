@@ -13,7 +13,7 @@ const db = getFirestore(app)
 
 
 export default function Home() {
-  const [docs, setDocs] = useState<QuerySnapshot<DocumentData> | null>(null)
+  const [docs, setDocs] = useState<any[] | null>(null)
   const scraper = new TikTokScraper();
 
   async function testing() {
