@@ -39,7 +39,7 @@ const Video = ({ video}: IVideoProps) => {
             ref={vidRef} 
             loop
             muted={false}
-            autoPlay={false}
+            autoPlay={true}
             >
               <source
                 src={video}

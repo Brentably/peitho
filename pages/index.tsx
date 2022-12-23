@@ -4,7 +4,7 @@ import app from '../lib/firebase'
 import { DocumentData, getFirestore, QuerySnapshot } from "firebase/firestore";
 import { collection, addDoc, getDocs } from "firebase/firestore"; 
 import { useEffect, useState } from 'react';
-
+import Link from 'next/link';
 
 
 const db = getFirestore(app)
@@ -58,6 +58,9 @@ export default function Home() {
       ))
       : null}
       <button className='bg-slate-300 p-2 rounded-lg' onClick={testing}>add user button</button>
+      <Link href='/feed'>
+        <button className='bg-blue-500 p-2 rounded-lg'>For Me Feed</button>
+      </Link>
     </div>
   )
 }
