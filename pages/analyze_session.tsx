@@ -1,9 +1,16 @@
 import { type } from "os";
 import { ChangeEvent, MouseEventHandler, useState } from "react";
+// import PostViewer from '../components/post_viewer';
 
+
+
+interface fyp {
+  entries: any[]
+}
 
 export default function PrivatePage() {
   const [file, setFile] = useState<{file: null | File}>({file: null})
+  const [fyp, setFyp] = useState<fyp | null>()
 
   function getApiFields(url: string): string {
     const urlObject = new URL(url);
@@ -17,7 +24,6 @@ export default function PrivatePage() {
     const events = har.log.entries.filter((entry: any) => {
         let apiName = getApiFields(entry.request.url)
         if (apiName === '/api/recommend/item_list/' ) {
-            console.log(entry.response.content.text)
             let content = JSON.parse(Buffer.from(entry.response.content.text, 'base64').toString());
             return {
                 content
@@ -25,7 +31,7 @@ export default function PrivatePage() {
         }
       })
     let fyp = JSON.parse(Buffer.from(events[0].response.content.text, 'base64').toString())
-    console.log(fyp)
+    setFyp(fyp);
     return fyp;
   }
 
@@ -44,6 +50,10 @@ export default function PrivatePage() {
             body: JSON.stringify(await extractEvents(file.file))
         });
     }
+
+  const handleFile = async (): Promise<void> => {
+
+  }
     
     
   };
@@ -53,7 +63,7 @@ export default function PrivatePage() {
       <div>
         <h4>Select File</h4>
         <input 
-        className="text-white"
+        className="file:border file:border-solid"
         type="file"
         name="currFile" 
         onChange={uploadToClient} />
@@ -64,6 +74,7 @@ export default function PrivatePage() {
         >
           Send to server
         </button>
+        {/* <PostViewer /> */}
       </div>
     </div>
   );
