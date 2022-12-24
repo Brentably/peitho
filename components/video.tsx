@@ -3,9 +3,10 @@ import React, { useRef, useState } from "react";
 
 export interface IVideoProps {
   video: string
+  autoplay: boolean
 }
 
-const Video = ({ video}: IVideoProps) => {
+const Video = ({ video, autoplay}: IVideoProps) => {
   const [playing, setPlaying] = useState<boolean>(false)
   const vidRef = useRef<HTMLVideoElement>(null);
 
@@ -33,21 +34,16 @@ const Video = ({ video}: IVideoProps) => {
   }
 
   return ( 
-        (<div className='relative w-full h-full'>
-          <div>
+        (<div className='snap-always snap-start'>
             <video 
             ref={vidRef} 
             loop
             muted={false}
-            autoPlay={true}
-            >
-              <source
-                src={video}
-              />
+            autoPlay={autoplay}>
+              <source src={video} />
             </video>
-          </div>
           
-          <div className='absolute top-0 left-0 w-full h-full' onClick={onVideoPress}></div>
+          <div className='absolute top-0 left-0 w-full h-full snap_start' onClick={onVideoPress}></div>
           </div>
               )
     )
