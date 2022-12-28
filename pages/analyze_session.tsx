@@ -60,7 +60,7 @@ export default function PrivatePage() {
 
   return (
     <div>
-      <div>
+      <div className='grid grid-rows-4 grid-flow-col gap-4 auto-rows-auto justify-items-center'>
         <h4>Select File</h4>
         <input 
         className="file:border file:border-solid"
@@ -72,7 +72,7 @@ export default function PrivatePage() {
           type="submit"
           onClick={uploadToServer}
         >
-          Send to server
+          Process
         </button>
         {/* <PostViewer /> */}
       </div>

@@ -18,7 +18,7 @@ const ImageFeed: NextPage = () => {
         <div className=''>
           <h2>Snapping almost done ..</h2>
         </div>
-        <div id="images_container" className='relative w-full snap-y snap-mandatory'>
+        <div id="images_container" className='max-h-screen overflow-y-scroll relative w-full snap-y snap-mandatory'>
         {images.map((image: string, index: number) => {
             return <Image key={image + index.toString() } image={image}   />
         })}

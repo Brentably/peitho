@@ -31,14 +31,14 @@ const Image = ({ image}: IImageProps) => {
   // }
 
   return ( 
-        (<div className='snap-always snap-start shrink-0 border'>
+        (<section className='snap-always snap-start shrink-0 border w-full h-screen'>
             <img
             className='shrink-0'
             ref={imgRef}
             src={image} >
             </img>
           
-          </div>
+          </section>
               )
     )
 };
