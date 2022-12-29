@@ -6,6 +6,7 @@ import { ChangeEvent, MouseEventHandler, useState, useRef, ChangeEventHandler, F
 
 interface IVideoProps {
   video_desc: string;
+  video_id: string;
   views: number;
   likes: number;
   comments: number;
@@ -22,7 +23,7 @@ interface IAnalyticsProps {
 }
 
 
-export default function analyze_user() {
+const AnalyzeUser = () => {
   const [username, setUsername] = useState('');
   const [status, setStatus] = useState('typing');
   const [posts, setPosts] = useState<IVideoProps[] | undefined>();
@@ -87,13 +88,13 @@ export default function analyze_user() {
           <div>
             <h2>Top 10 Keywords</h2>
             <ul>
-              {keywords.slice(0, 10).map((keyword: IKeywordProps) => {return (<li>{keyword.text}: {keyword.value}</li>)})}
+              {keywords.slice(0, 10).map((keyword: IKeywordProps, index: number) => {return (<li key={index.toString() + keyword.text}>{keyword.text}: {keyword.value}</li>)})}
             </ul>
           </div>
           <div className='justify-items-center'>
             {posts.map((post: IVideoProps) => {
               return (
-                <div>
+                <div key={post.video_id}>
                 <h2>{post.video_desc}</h2>
                 <ul className='list-disc'>
                   <li>Views: {post.views}</li>
@@ -112,3 +113,5 @@ export default function analyze_user() {
     
   
 }
+
+export default AnalyzeUser;

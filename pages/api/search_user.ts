@@ -32,11 +32,10 @@ async function searchUser(req: NextApiRequest, res: NextApiResponse) {
         let secUID = user_secUID.userInfo.user.secUid;
         let user_videos_res = await api.public.posts({secUid: secUID})
         let user_videos = await user_videos_res.json;
-        console.log(user_videos_res)
-        console.log(user_videos_res.headers)
         let video_response = user_videos.itemList.map((video: any) => {
             return {
                 video_desc: video.desc,
+                video_id: video.id.toString(),
                 views: video.stats.playCount,
                 likes: video.stats.diggCount,
                 comments: video.stats.commentCount,
