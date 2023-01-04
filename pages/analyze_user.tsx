@@ -88,7 +88,7 @@ const AnalyzeUser = () => {
           <div>
             <h2>Top 10 Keywords</h2>
             <ul>
-              {keywords.slice(0, 10).map((keyword: IKeywordProps, index: number) => {return (<li key={index.toString() + keyword.text}>{keyword.text}: {keyword.value}</li>)})}
+              {keywords.slice(0, 11).map((keyword: IKeywordProps, index: number) => {return (<li key={index.toString() + keyword.text}>{keyword.text}: {keyword.value}</li>)})}
             </ul>
           </div>
           <div className='justify-items-center'>
