@@ -1,0 +1,5 @@
+Want to be able scrape tiktoks by keyword,
+paginating and accounting for rate limiting
+convert to audio using ff mpeg
+push to azure
+
